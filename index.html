@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natural Juice - Hệ thống tuyển dụng & Sản phẩm</title>
+    <title>Natural Juice - Tuyển Dụng Sales Đồng Nai</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .page { display: none; }
         .active { display: block; }
-        .hero-overlay { background: rgba(0, 0, 0, 0.45); }
+        .hero-overlay { background: rgba(0, 0, 0, 0.5); }
+        #mobile-menu { transition: all 0.3s ease-in-out; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
@@ -24,74 +25,105 @@
                     <span class="font-black text-xl tracking-tight uppercase italic text-gray-800">Natural <span class="text-green-600">Juice</span></span>
                 </div>
 
-                <!-- Nút Menu cho điện thoại -->
+                <!-- Nút Menu Mobile -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
 
-                <!-- Menu cho Máy tính -->
+                <!-- Menu Desktop -->
                 <div class="hidden md:flex space-x-8 items-center font-bold text-sm uppercase">
                     <a href="#" onclick="showPage('home')" class="hover:text-green-600 transition">Trang Chủ</a>
                     <a href="#" onclick="showPage('products')" class="hover:text-green-600 transition">Sản Phẩm</a>
-                    <a href="#" onclick="showPage('recruitment')" class="hover:text-green-600 transition text-orange-600">Tuyển Dụng</a>
-                    <button id="nav-admin" onclick="showPage('admin')" class="hidden text-red-600 border-2 border-red-600 px-3 py-1 rounded-lg hover:bg-red-50">ADMIN</button>
+                    <a href="#" onclick="showPage('recruitment')" class="hover:text-green-600 transition text-orange-600 font-black">Tuyển Dụng</a>
                     <div id="auth-info" class="flex items-center border-l pl-4 space-x-3">
                         <span id="user-display" class="text-green-700 font-bold capitalize"></span>
-                        <button id="btn-login-nav" onclick="showPage('auth')" class="bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700">Đăng nhập</button>
+                        <button id="btn-login-nav" onclick="showPage('auth')" class="bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition font-bold text-xs">Đăng nhập</button>
                         <button id="btn-logout" onclick="logout()" class="hidden text-gray-400 hover:text-red-500"><i class="fas fa-power-off text-lg"></i></button>
                     </div>
                 </div>
             </div>
 
-            <!-- Menu cho Điện thoại (Ẩn mặc định) -->
+            <!-- Menu Mobile -->
             <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2 font-bold uppercase text-sm border-t pt-2">
                 <a href="#" onclick="showPage('home'); toggleMobileMenu()" class="block py-3 px-2 text-gray-600 border-b">Trang Chủ</a>
                 <a href="#" onclick="showPage('products'); toggleMobileMenu()" class="block py-3 px-2 text-gray-600 border-b">Sản Phẩm</a>
                 <a href="#" onclick="showPage('recruitment'); toggleMobileMenu()" class="block py-3 px-2 text-orange-600 border-b">Tuyển Dụng</a>
-                <a href="#" onclick="showPage('auth'); toggleMobileMenu()" class="block py-3 px-2 text-green-600 border-b">Đăng nhập / Tài khoản</a>
-                <button id="nav-admin-mobile" onclick="showPage('admin'); toggleMobileMenu()" class="hidden w-full text-left py-3 px-2 text-red-600 font-black">ADMIN PANEL</button>
+                <a href="#" onclick="showPage('auth'); toggleMobileMenu()" class="block py-3 px-2 text-green-600 border-b">Tài khoản</a>
             </div>
         </div>
     </nav>
 
     <!-- TRANG CHỦ -->
     <section id="home" class="page active">
-        <div class="relative h-[550px] overflow-hidden">
-            <img src="./z7844702635862_a9db7f0a5f8166e4b796150cc6453482.jpg" alt="Natural Juice Main" class="w-full h-full object-cover">
+        <!-- Hero Section -->
+        <div class="relative h-[450px] md:h-[550px] overflow-hidden">
+            <img src="./z7844702635862_a9db7f0a5f8166e4b796150cc6453482.jpg" alt="Natural Juice" class="w-full h-full object-cover">
             <div class="absolute inset-0 hero-overlay flex flex-col justify-center items-center text-white text-center px-4">
-                <h1 class="text-4xl md:text-7xl font-black mb-4 drop-shadow-2xl uppercase tracking-tighter text-white">Nhân Viên Kinh Doanh Tại Đồng Nai</h1>
-                <p class="text-lg md:text-2xl font-medium mb-10 italic max-w-3xl">"Cùng chúng tôi mang tinh hoa trái cây thật đến mọi đại lý và gia đình Việt"</p>
+                <h1 class="text-3xl md:text-7xl font-black mb-4 drop-shadow-2xl uppercase tracking-tighter">Nhân Viên Kinh Doanh Tại Đồng Nai</h1>
+                <p class="text-lg md:text-2xl font-medium mb-10 italic max-w-3xl opacity-90">"Cùng chúng tôi mang tinh hoa trái cây thật đến mọi đại lý và gia đình Việt"</p>
                 <div class="flex gap-4">
-                    <button onclick="showPage('recruitment')" class="bg-white text-green-700 px-8 md:px-10 py-3 md:py-4 rounded-full font-black shadow-2xl hover:bg-green-50 transition uppercase text-sm md:text-base">Ứng tuyển ngay</button>
-                    <button onclick="showPage('products')" class="bg-green-600 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-black shadow-2xl hover:bg-green-700 transition uppercase text-sm md:text-base">Xem Sản Phẩm</button>
+                    <button onclick="showPage('recruitment')" class="bg-white text-green-700 px-6 md:px-10 py-3 md:py-4 rounded-full font-black shadow-2xl uppercase text-xs md:text-base hover:bg-green-50 transition transform hover:scale-105">Ứng tuyển ngay</button>
+                    <button onclick="showPage('products')" class="bg-green-600 text-white px-6 md:px-10 py-3 md:py-4 rounded-full font-black shadow-2xl uppercase text-xs md:text-base hover:bg-green-700 transition">Xem Sản Phẩm</button>
                 </div>
             </div>
         </div>
 
-        <div class="max-w-6xl mx-auto py-12 md:py-20 px-4 grid md:grid-cols-2 gap-12 text-center md:text-left">
-            <div class="space-y-6">
-                <h2 class="text-3xl font-black text-green-800 uppercase border-b-4 border-green-600 inline-block">Chế độ đãi ngộ</h2>
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                    <p class="text-2xl font-bold text-orange-600 mb-2 font-mono">Lương CB: 8.000.000đ</p>
-                    <p class="text-gray-600 font-medium">+ Phụ cấp + % Doanh số</p>
-                    <ul class="mt-4 space-y-2 italic text-gray-500">
-                        <li>- Thử việc 01 tháng (85% lương cơ bản)</li>
-                        <li>- Đóng BHXH, BHYT đầy đủ</li>
-                        <li>- Du lịch, team building hàng năm</li>
+        <div class="max-w-7xl mx-auto py-12 md:py-20 px-4 space-y-12">
+            <!-- Grid: Quyền lợi và Yêu cầu -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Chế độ đãi ngộ -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border-l-8 border-green-600">
+                    <h2 class="text-2xl font-black text-green-800 uppercase mb-6 flex items-center">
+                        <i class="fas fa-star-awesome text-orange-500 mr-2"></i> Chế độ đãi ngộ
+                    </h2>
+                    <p class="text-2xl font-bold text-orange-600 mb-2 font-mono tracking-tighter">Lương CB: 8.000.000đ</p>
+                    <p class="text-gray-700 font-bold mb-6">+ Phụ cấp + % Doanh số hấp dẫn</p>
+                    <ul class="space-y-3 text-gray-600 italic font-medium">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Thử việc 01 tháng (85% lương cơ bản)</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Đóng BHXH, BHYT đầy đủ theo quy định</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Team building, du lịch hàng năm cùng công ty</li>
+                    </ul>
+                </div>
+
+                <!-- Yêu cầu công việc -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border-l-8 border-orange-500">
+                    <h2 class="text-2xl font-black text-orange-700 uppercase mb-6 flex items-center">
+                        <i class="fas fa-user-check text-orange-500 mr-2"></i> Yêu cầu công việc
+                    </h2>
+                    <ul class="space-y-4 text-gray-700 font-medium">
+
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>Có phương tiện đi lại (xe máy) và điện thoại thông minh.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>Kỹ năng giao tiếp tốt, không ngại đi thị trường.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>Ưu tiên ứng viên có kinh nghiệm sales hàng tiêu dùng hoặc thực phẩm.</span>
+                        </li>
+                                                <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>Không có kinh nghiệm sẽ được đào tạo.</span>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="space-y-6">
-                <h2 class="text-3xl font-black text-green-800 uppercase border-b-4 border-green-600 inline-block">Văn phòng làm việc</h2>
-                <div class="text-gray-600 space-y-4 font-medium text-sm md:text-base">
-                    <p>🏢 <b>Hà Nội:</b> 20 BT2 Khu ĐTM Cầu Bươu, Thanh Liệt</p>
-                    <p>🏢 <b>TP. HCM:</b> 37 đường 47 P Tân Tạo, Q Bình Tân</p>
-                    <p>🏢 <b>Đồng Nai:</b> Khu phố 31, Long Bình, Biên Hòa</p>
-                    <div class="mt-6 p-4 bg-green-50 rounded-2xl border border-green-100 font-bold text-green-700 text-lg">
-                        Hotline Tuyển Dụng: 0585.168.666 - 0919.611.883
-                    </div>
+
+            <!-- Địa điểm & Liên hệ -->
+            <div class="bg-green-50 p-8 rounded-3xl border border-green-100 grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-2xl font-black text-green-800 uppercase italic mb-4">📍 Địa điểm làm việc</h2>
+                    <p class="text-lg font-bold text-gray-700 mb-2">🏢 Khu phố 31, Phường Long Bình, Thành Phố Đồng Nai</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="font-black text-green-800 mb-2 tracking-widest uppercase">HOTLINE TUYỂN DỤNG:</p>
+                    <p class="text-3xl md:text-4xl font-black text-orange-600 tracking-tighter">0585.168.666</p>
+                    <p class="text-3xl md:text-4xl font-black text-orange-600 tracking-tighter">0919.611.883</p>
                 </div>
             </div>
         </div>
@@ -99,57 +131,41 @@
 
     <!-- TRANG SẢN PHẨM -->
     <section id="products" class="page">
-        <div class="max-w-6xl mx-auto py-10 md:py-20 px-4">
-            <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-black text-green-800 uppercase mb-2 italic">Sản Phẩm Tự Nhiên</h2>
-                <p class="text-gray-500 italic text-sm">"100% từ trái cây thật - không chất bảo quản"</p>
-            </div>
+        <div class="max-w-7xl mx-auto py-12 px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-black text-green-800 uppercase mb-4 italic">Sản Phẩm Tự Nhiên</h2>
+            <p class="text-gray-500 mb-16 italic uppercase font-bold text-xs tracking-widest">100% từ trái cây thật - không chất bảo quản</p>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Sản phẩm 1 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 group hover:shadow-2xl transition">
-                    <div class="h-64 md:h-80 overflow-hidden">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Sản phẩm lặp lại tương tự -->
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border group">
+                    <div class="h-64 overflow-hidden">
                         <img src="./z7844749759495_e937f9f80b662322ae6880e32effb54f.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
-                    <div class="p-4 text-center bg-white border-t">
-                        <h3 class="text-lg font-bold uppercase text-gray-800 tracking-wider">Nước ép Nho</h3>
-                    </div>
+                    <p class="p-4 font-black uppercase text-xs text-gray-700 bg-gray-50">Nước ép Nho</p>
                 </div>
-                <!-- Sản phẩm 2 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 group hover:shadow-2xl transition">
-                    <div class="h-64 md:h-80 overflow-hidden">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border group">
+                    <div class="h-64 overflow-hidden">
                         <img src="./z7844749784785_87f30acef769d0428ff52870975e5002.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
-                    <div class="p-4 text-center bg-white border-t">
-                        <h3 class="text-lg font-bold uppercase text-gray-800 tracking-wider">Nước ép Quýt</h3>
-                    </div>
+                    <p class="p-4 font-black uppercase text-xs text-gray-700 bg-gray-50">Nước ép Quýt</p>
                 </div>
-                <!-- Sản phẩm 3 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 group hover:shadow-2xl transition">
-                    <div class="h-64 md:h-80 overflow-hidden">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border group">
+                    <div class="h-64 overflow-hidden">
                         <img src="./z7844749852365_aced763f33aed75703041a85acb8a3c7.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
-                    <div class="p-4 text-center bg-white border-t">
-                        <h3 class="text-lg font-bold uppercase text-gray-800 tracking-wider">Nước Sữa Dừa</h3>
-                    </div>
+                    <p class="p-4 font-black uppercase text-xs text-gray-700 bg-gray-50">Nước Sữa Dừa</p>
                 </div>
-                <!-- Sản phẩm 4 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 group hover:shadow-2xl transition">
-                    <div class="h-64 md:h-80 overflow-hidden">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border group">
+                    <div class="h-64 overflow-hidden">
                         <img src="./z7844749810074_b253b74cc54d51552cdb7212892b1337.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
-                    <div class="p-4 text-center bg-white border-t">
-                        <h3 class="text-lg font-bold uppercase text-gray-800 tracking-wider">Nước ép Táo</h3>
-                    </div>
+                    <p class="p-4 font-black uppercase text-xs text-gray-700 bg-gray-50">Nước ép Táo</p>
                 </div>
-                <!-- Sản phẩm 5 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 group hover:shadow-2xl transition">
-                    <div class="h-64 md:h-80 overflow-hidden">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border group">
+                    <div class="h-64 overflow-hidden">
                         <img src="./z7844749834399_0644393dea21dba50d94b8d8c9b2c535.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
-                    <div class="p-4 text-center bg-white border-t">
-                        <h3 class="text-lg font-bold uppercase text-gray-800 tracking-wider">Nước ép Lựu</h3>
-                    </div>
+                    <p class="p-4 font-black uppercase text-xs text-gray-700 bg-gray-50">Nước ép Lựu</p>
                 </div>
             </div>
         </div>
@@ -157,28 +173,28 @@
 
     <!-- TRANG TUYỂN DỤNG -->
     <section id="recruitment" class="page">
-        <div class="max-w-2xl mx-auto py-10 md:py-16 px-4">
-            <div id="recruit-locked" class="text-center p-12 bg-white rounded-3xl shadow-xl">
-                <i class="fas fa-lock text-5xl text-gray-200 mb-6"></i>
-                <h2 class="text-2xl font-bold mb-4 text-gray-700">Vui lòng đăng nhập</h2>
-                <button onclick="showPage('auth')" class="bg-green-600 text-white px-8 py-3 rounded-xl font-bold shadow-md">Đăng nhập ngay</button>
+        <div class="max-w-2xl mx-auto py-12 px-4 text-center">
+            <div id="recruit-locked" class="bg-white p-12 rounded-3xl shadow-xl border">
+                <i class="fas fa-user-circle text-5xl text-gray-200 mb-4"></i>
+                <h2 class="text-xl font-bold mb-6 text-gray-600">Vui lòng đăng nhập để nộp đơn tuyển dụng</h2>
+                <button onclick="showPage('auth')" class="bg-green-600 text-white px-8 py-3 rounded-xl font-black uppercase shadow-lg hover:bg-green-700 transition">Đăng nhập / Đăng ký</button>
             </div>
-
-            <div id="recruit-form-container" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl border-t-8 border-green-600">
-                <h2 class="text-xl md:text-2xl font-black mb-8 uppercase text-center text-green-800">Hồ Sơ Tuyển Dụng Online</h2>
+            
+            <div id="recruit-form-container" class="hidden bg-white p-8 rounded-3xl shadow-2xl border-t-8 border-green-600 text-left">
+                <h2 class="text-2xl font-black mb-8 uppercase text-center text-green-800">Hồ Sơ Tuyển Dụng Online</h2>
                 <form id="applyForm" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" id="fullname" placeholder="Họ và tên" required class="w-full px-4 py-3 bg-gray-50 border rounded-xl outline-none focus:border-green-500">
-                        <input type="date" id="dob" required class="w-full px-4 py-3 bg-gray-50 border rounded-xl outline-none">
+                        <input type="text" id="fullname" placeholder="Họ và tên ứng viên" required class="w-full px-4 py-3 bg-gray-50 border rounded-xl outline-none focus:ring-2 focus:ring-green-500 transition">
+                        <input type="date" id="dob" required class="w-full px-4 py-3 bg-gray-50 border rounded-xl outline-none focus:ring-2 focus:ring-green-500">
                     </div>
-                    <input type="text" id="address" placeholder="Địa chỉ thường trú" required class="w-full px-4 py-3 bg-gray-50 border rounded-xl outline-none">
-                    <textarea id="experience" rows="3" placeholder="Kinh nghiệm làm việc sơ lược..." required class="w-full px-4 py-3 bg-gray-50 border rounded-xl outline-none"></textarea>
+                    <input type="text" id="address" placeholder="Địa chỉ thường trú (Số nhà, đường, Phường/Xã)" required class="w-full px-4 py-3 bg-gray-50 border rounded-xl outline-none focus:ring-2 focus:ring-green-500">
+                    <textarea id="experience" rows="3" placeholder="Mô tả ngắn gọn kinh nghiệm làm việc của bạn..." required class="w-full px-4 py-3 bg-gray-50 border rounded-xl outline-none focus:ring-2 focus:ring-green-500"></textarea>
                     
                     <div class="p-6 bg-orange-50 rounded-2xl border-2 border-dashed border-orange-200 text-center">
-                        <p class="text-xs font-bold text-orange-600 mb-2 uppercase tracking-wide">Yêu cầu đính kèm CV (File PDF/Ảnh)</p>
-                        <input type="file" id="cvFile" accept=".pdf,image/*" required class="w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:bg-orange-600 file:text-white file:border-0 hover:file:bg-orange-700 cursor-pointer">
+                        <p class="text-xs font-bold text-orange-600 mb-2 uppercase tracking-wide italic">Yêu cầu đính kèm CV (File PDF hoặc Ảnh chụp hồ sơ)</p>
+                        <input type="file" id="cvFile" accept=".pdf,image/*" required class="w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:bg-orange-600 file:text-white file:border-0 hover:file:bg-orange-700 cursor-pointer font-bold">
                     </div>
-                    <button type="submit" id="btnSubmit" class="w-full bg-green-600 text-white py-4 rounded-xl font-black text-lg md:text-xl shadow-lg hover:bg-green-700 transition">NỘP HỒ SƠ NGAY</button>
+                    <button type="submit" id="btnSubmit" class="w-full bg-green-600 text-white py-4 rounded-xl font-black text-xl shadow-lg hover:bg-green-700 transition transform hover:-translate-y-1">NỘP HỒ SƠ NGAY</button>
                 </form>
             </div>
         </div>
@@ -186,63 +202,37 @@
 
     <!-- TRANG ĐĂNG NHẬP / ĐĂNG KÝ -->
     <section id="auth" class="page">
-        <div class="max-w-md mx-auto py-10 md:py-20 px-4">
-            <div class="bg-white p-10 rounded-3xl shadow-2xl">
+        <div class="max-w-md mx-auto py-20 px-4">
+            <div class="bg-white p-10 rounded-3xl shadow-2xl border">
                 <div class="flex mb-8 bg-gray-100 p-1 rounded-2xl">
-                    <button onclick="toggleAuthMode('login')" id="tab-login" class="flex-1 py-3 rounded-xl font-bold text-green-600 bg-white">Đăng nhập</button>
-                    <button onclick="toggleAuthMode('register')" id="tab-register" class="flex-1 py-3 rounded-xl font-bold text-gray-400">Đăng ký</button>
+                    <button onclick="toggleAuthMode('login')" id="tab-login" class="flex-1 py-3 rounded-xl font-bold text-green-600 bg-white shadow-sm transition uppercase text-xs">Đăng nhập</button>
+                    <button onclick="toggleAuthMode('register')" id="tab-register" class="flex-1 py-3 rounded-xl font-bold text-gray-400 transition uppercase text-xs">Đăng ký</button>
                 </div>
                 <form id="authForm" class="space-y-4">
                     <input type="hidden" id="auth-mode" value="login">
-                    <input type="text" id="username" placeholder="Tên đăng nhập" required class="w-full px-5 py-4 border rounded-2xl outline-none">
-                    <input type="password" id="password" placeholder="Mật khẩu" required class="w-full px-5 py-4 border rounded-2xl outline-none">
-                    <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-2xl font-black shadow-lg">XÁC NHẬN</button>
+                    <input type="text" id="username" placeholder="Tên đăng nhập" required class="w-full px-5 py-4 border rounded-2xl outline-none focus:ring-2 focus:ring-green-600 transition">
+                    <input type="password" id="password" placeholder="Mật khẩu" required class="w-full px-5 py-4 border rounded-2xl outline-none focus:ring-2 focus:ring-green-600 transition">
+                    <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-2xl font-black shadow-lg hover:opacity-90 uppercase transition">Xác nhận</button>
                 </form>
-                <p id="auth-msg" class="mt-4 text-center text-red-500 font-bold"></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- TRANG ADMIN -->
-    <section id="admin" class="page">
-        <div class="max-w-7xl mx-auto py-10 md:py-16 px-4">
-            <div class="flex justify-between items-end mb-8">
-                <h2 class="text-2xl md:text-3xl font-black uppercase text-gray-800 italic tracking-tighter">Quản lý ứng viên</h2>
-                <button onclick="clearData()" class="text-red-500 text-xs font-bold underline">Xóa sạch hồ sơ</button>
-            </div>
-            <div class="bg-white rounded-3xl shadow-xl overflow-x-auto border border-gray-50">
-                <table class="w-full text-left min-w-[600px]">
-                    <thead class="bg-gray-800 text-white">
-                        <tr>
-                            <th class="p-6">Ứng viên</th>
-                            <th class="p-6">Địa chỉ</th>
-                            <th class="p-6">Thời gian</th>
-                            <th class="p-6">Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody id="adminTableBody" class="divide-y divide-gray-100"></tbody>
-                </table>
+                <p id="auth-msg" class="mt-4 text-center text-sm text-red-500 font-bold italic"></p>
             </div>
         </div>
     </section>
 
     <script>
-        const ADMIN_INFO = { user: 'admin', pass: 'trangdatchau@' };
         let currentUser = JSON.parse(sessionStorage.getItem('juiceUser')) || null;
 
-        // --- XỬ LÝ MENU MOBILE ---
+        // XỬ LÝ MENU MOBILE
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
         function toggleMobileMenu() {
             mobileMenu.classList.add('hidden');
         }
 
-        // --- CHUYỂN TRANG ---
+        // ĐIỀU HƯỚNG TRANG
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
@@ -255,16 +245,21 @@
                     document.getElementById('recruit-form-container').classList.add('hidden');
                 }
             }
-            if(pageId === 'admin') loadAdminData();
             window.scrollTo(0,0);
         }
 
+        // ĐĂNG NHẬP / ĐĂNG KÝ
         function toggleAuthMode(mode) {
             document.getElementById('auth-mode').value = mode;
             const tL = document.getElementById('tab-login');
             const tR = document.getElementById('tab-register');
-            if(mode === 'login') { tL.className = "flex-1 py-3 rounded-xl font-bold text-green-600 bg-white shadow-sm"; tR.className = "flex-1 py-3 rounded-xl font-bold text-gray-400"; }
-            else { tR.className = "flex-1 py-3 rounded-xl font-bold text-green-600 bg-white shadow-sm"; tL.className = "flex-1 py-3 rounded-xl font-bold text-gray-400"; }
+            if(mode === 'login') {
+                tL.className = "flex-1 py-3 rounded-xl font-bold text-green-600 bg-white shadow-sm transition uppercase text-xs";
+                tR.className = "flex-1 py-3 rounded-xl font-bold text-gray-400 transition uppercase text-xs";
+            } else {
+                tR.className = "flex-1 py-3 rounded-xl font-bold text-green-600 bg-white shadow-sm transition uppercase text-xs";
+                tL.className = "flex-1 py-3 rounded-xl font-bold text-gray-400 transition uppercase text-xs";
+            }
         }
 
         document.getElementById('authForm').addEventListener('submit', function(e) {
@@ -276,53 +271,63 @@
             let db = JSON.parse(localStorage.getItem('juiceUsers') || '[]');
 
             if(mode === 'login') {
-                if(user === ADMIN_INFO.user && pass === ADMIN_INFO.pass) { doLogin({username: 'admin', role: 'admin'}); }
-                else {
-                    const found = db.find(u => u.username === user && u.password === pass);
-                    if(found) doLogin({username: found.username, role: 'user'});
-                    else msg.innerText = "Tài khoản hoặc mật khẩu không đúng!";
+                const found = db.find(u => u.username === user && u.password === pass);
+                if(found) {
+                    currentUser = { username: found.username };
+                    sessionStorage.setItem('juiceUser', JSON.stringify(currentUser));
+                    updateUI();
+                    showPage('home');
+                } else {
+                    msg.innerText = "Tên đăng nhập hoặc mật khẩu không đúng!";
                 }
             } else {
-                if(user.toLowerCase() === 'admin' || db.find(u => u.username === user)) msg.innerText = "Tên không khả dụng!";
-                else { db.push({username: user, password: pass}); localStorage.setItem('juiceUsers', JSON.stringify(db)); alert("Đăng ký thành công!"); toggleAuthMode('login'); }
+                if(db.find(u => u.username === user)) {
+                    msg.innerText = "Tên tài khoản này đã tồn tại!";
+                } else {
+                    db.push({username: user, password: pass});
+                    localStorage.setItem('juiceUsers', JSON.stringify(db));
+                    alert("Đăng ký thành công! Mời bạn đăng nhập.");
+                    toggleAuthMode('login');
+                }
             }
         });
 
-        function doLogin(data) { currentUser = data; sessionStorage.setItem('juiceUser', JSON.stringify(data)); updateUI(); showPage('home'); }
-        function logout() { sessionStorage.removeItem('juiceUser'); currentUser = null; updateUI(); showPage('home'); }
-        
+        function logout() {
+            sessionStorage.removeItem('juiceUser');
+            currentUser = null;
+            updateUI();
+            showPage('home');
+        }
+
         function updateUI() {
             const disp = document.getElementById('user-display');
             const btnL = document.getElementById('btn-login-nav');
             const btnO = document.getElementById('btn-logout');
-            const navA = document.getElementById('nav-admin');
-            const navAMobile = document.getElementById('nav-admin-mobile');
 
             if(currentUser) {
-                disp.innerText = currentUser.username; 
-                btnL.classList.add('hidden'); 
+                disp.innerText = currentUser.username;
+                btnL.classList.add('hidden');
                 btnO.classList.remove('hidden');
-                if(currentUser.role === 'admin') {
-                    navA.classList.remove('hidden');
-                    navAMobile.classList.remove('hidden');
-                } else {
-                    navA.classList.add('hidden');
-                    navAMobile.classList.add('hidden');
-                }
-            } else { 
-                disp.innerText = ""; 
-                btnL.classList.remove('hidden'); 
-                btnO.classList.add('hidden'); 
-                navA.classList.add('hidden'); 
-                navAMobile.classList.add('hidden');
+            } else {
+                disp.innerText = "";
+                btnL.classList.remove('hidden');
+                btnO.classList.add('hidden');
             }
         }
 
+        // NỘP HỒ SƠ GỬI VỀ GOOGLE SHEETS
         document.getElementById('applyForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const btn = document.getElementById('btnSubmit'); btn.disabled = true; btn.innerText = "Đang gửi...";
+            const btn = document.getElementById('btnSubmit');
+            btn.disabled = true;
+            btn.innerText = "Đang gửi hồ sơ...";
+
             const fileInp = document.getElementById('cvFile').files[0];
-            const toBase64 = file => new Promise((res, rej) => { const reader = new FileReader(); reader.readAsDataURL(file); reader.onload = () => res(reader.result); });
+            const toBase64 = file => new Promise((res) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => res(reader.result);
+            });
 
             try {
                 const fileBase64 = await toBase64(fileInp);
@@ -331,39 +336,29 @@
                     dob: document.getElementById('dob').value,
                     address: document.getElementById('address').value,
                     exp: document.getElementById('experience').value,
-                    fileName: fileInp.name, fileData: fileBase64,
+                    fileName: fileInp.name,
+                    fileData: fileBase64,
                     time: new Date().toLocaleString('vi-VN')
                 };
-                let apps = JSON.parse(localStorage.getItem('juiceApps') || '[]');
-                apps.push(app); localStorage.setItem('juiceApps', JSON.stringify(apps));
-                alert("Nộp hồ sơ thành công!");
-                this.reset(); showPage('home');
-            } catch (err) { alert("Lỗi khi đính kèm file!"); }
-            finally { btn.disabled = false; btn.innerText = "NỘP HỒ SƠ NGAY"; }
+
+                // Gửi về Google App Script của bạn
+                await fetch('https://script.google.com/macros/s/AKfycbxNIMkPtCOiqOIG7bm-uQVG48JW4DIcqZDnap_PNRxGFhgoh8SqfSpnD9yJFfARAQ2A/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify(app)
+                });
+
+                alert("Nộp hồ sơ thành công! Dữ liệu đã được gửi về bộ phận nhân sự công ty.");
+                this.reset();
+                showPage('home');
+            } catch (err) {
+                alert("Lỗi kết nối khi gửi hồ sơ! Vui lòng kiểm tra lại mạng.");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "NỘP HỒ SƠ NGAY";
+            }
         });
 
-        function loadAdminData() {
-            const body = document.getElementById('adminTableBody');
-            const apps = JSON.parse(localStorage.getItem('juiceApps') || '[]');
-            body.innerHTML = apps.length ? apps.map((a, i) => `
-                <tr class="hover:bg-gray-50 transition text-sm md:text-base">
-                    <td class="p-6"><b>${a.name}</b><br><small class="text-gray-400">Sinh ngày: ${a.dob}</small></td>
-                    <td class="p-6 text-sm">${a.address}</td>
-                    <td class="p-6 text-xs text-gray-500">${a.time}</td>
-                    <td class="p-6"><button onclick="downloadCV(${i})" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-bold shadow hover:bg-blue-700">TẢI CV</button></td>
-                </tr>
-            `).reverse().join('') : '<tr><td colspan="4" class="p-20 text-center text-gray-300">Chưa có ứng viên nộp đơn</td></tr>';
-        }
-
-        function downloadCV(i) {
-            const apps = JSON.parse(localStorage.getItem('juiceApps'));
-            const a = document.createElement('a');
-            a.href = apps[i].fileData;
-            a.download = "CV_" + apps[i].name.replace(/\s/g, '_') + "_" + apps[i].fileName;
-            a.click();
-        }
-
-        function clearData() { if(confirm("Bạn có muốn xóa sạch tất cả hồ sơ ứng viên?")) { localStorage.removeItem('juiceApps'); loadAdminData(); } }
         updateUI();
     </script>
 </body>
